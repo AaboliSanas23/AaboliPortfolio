@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aaboli Sanas - Software Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background: #0a0a0a;
+            --foreground: #fafafa;
+            --primary: #0ea5e9;
+            --primary-foreground: #082f49;
+            --secondary: #1f2937;
+            --secondary-foreground: #f9fafb;
+            --muted: #374151;
+            --muted-foreground: #9ca3af;
+            --accent: #7e22ce;
+            --accent-foreground: #faf5ff;
+            --card: #111827;
+            --card-foreground: #f9fafb;
+            --border: #374151;
+            --radius: 0.5rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+            line-height: 1.6;
+        }
+        body {
+  background: radial-gradient(circle at 30% 20%, rgba(14,165,233,0.12), transparent 60%),
+              radial-gradient(circle at 80% 90%, rgba(126,34,206,0.12), transparent 70%),
+              #0a0a0a;
+  position: relative;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.08;
+}
+.separator {
+  height: 1px;
+  width: 100%;
+  margin: 4rem auto;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(14,165,233,0.6),
+    transparent
+  );
+}
+        .min-h-screen {
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Spacing utilities */
+        .space-y-2 > * + * {
+            margin-top: 0.5rem;
+        }
+
+        .space-y-3 > * + * {
+            margin-top: 0.75rem;
+        }
+
+        .space-y-4 > * + * {
+            margin-top: 1rem;
+        }
+
+        .space-y-6 > * + * {
+            margin-top: 1.5rem;
+        }
+
+        .space-y-8 > * + * {
+            margin-top: 2rem;
+        }
+
+        .space-y-12 > * + * {
+            margin-top: 3rem;
+        }
+
+        .gap-2 {
+            gap: 0.5rem;
+        }
+
+        .gap-3 {
+            gap: 0.75rem;
+        }
+
+        .gap-4 {
+            gap: 1rem;
+        }
+
+        .gap-6 {
+            gap: 1.5rem;
+        }
+
+        /* Section spacing */
+        section {
+            padding: 5rem 0;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 2.25rem;
+        }
+
+        h2 {
+            font-size: 1.875rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 3.75rem;
+            }
+            
+            h2 {
+                font-size: 2.25rem;
+            }
+            
+            h3 {
+                font-size: 1.875rem;
+            }
+        }
+
+        .text-sm {
+            font-size: 0.875rem;
+        }
+
+        .text-lg {
+            font-size: 1.125rem;
+        }
+
+        .text-xl {
+            font-size: 1.25rem;
+        }
+
+        .text-2xl {
+            font-size: 1.5rem;
+        }
+
+        .text-3xl {
+            font-size: 1.875rem;
+        }
+
+        .text-4xl {
+            font-size: 2.25rem;
+        }
+
+        .font-medium {
+            font-weight: 500;
+        }
+
+        .font-bold {
+            font-weight: 700;
+        }
+
+        .text-primary {
+            color: var(--primary);
+        }
+
+        .text-muted-foreground {
+            color: var(--muted-foreground);
+        }
+
+        .text-foreground {
+            color: var(--foreground);
+        }
+
+        /* Layout */
+        .flex {
+            display: flex;
+        }
+
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        .flex-row {
+            flex-direction: row;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .items-start {
+            align-items: flex-start;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .grid {
+            display: grid;
+        }
+
+        .grid-cols-1 {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+
+        .grid-cols-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .grid-cols-3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        @media (min-width: 768px) {
+            .md\:grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            
+            .md\:grid-cols-3 {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+            
+            .md\:items-center {
+                align-items: center;
+            }
+        }
+
+        /* Cards */
+        .card {
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .card-header {
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-description {
+            color: var(--muted-foreground);
+            font-size: 0.875rem;
+        }
+
+        .card-content {
+            margin-top: 1rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 0.875rem;
+        }
+
+        .btn-lg {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+        }
+
+        .btn-primary:hover {
+            background-color: #0284c7;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: var(--secondary-foreground);
+        }
+
+        .btn-secondary:hover {
+            background-color: #374151;
+            transform: scale(1.05);
+        }
+
+        /* Badges */
+        .project-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .tech-tag {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            background-color: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 0.375rem;
+            font-size: 0.75rem;
+            color: var(--secondary-foreground);
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background-color: var(--muted);
+        }
+
+        /* Hero section */
+        .section-hero {
+            position: relative;
+            overflow: hidden;
+            padding: 5rem 1.5rem;
+        }
+
+        .section-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, transparent 50%, transparent 100%);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 5px rgba(14, 165, 233, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(14, 165, 233, 0.8);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+        }
+
+        .animate-slide-in {
+            animation: slideIn 1s ease-out forwards;
+            opacity: 0;
+        }
+
+        .animate-glow {
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .icon-container {
+            background-color: rgba(14, 165, 233, 0.1);
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            margin-right: 1rem;
+        }
+
+        /* Featured project */
+        .featured {
+            grid-column: 1 / -1;
+            box-shadow: 0 0 30px rgba(14, 165, 233, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+        }
+
+        /* Utility classes */
+        .relative {
+            position: relative;
+        }
+
+        .absolute {
+            position: absolute;
+        }
+
+        .inset-0 {
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .inline-block {
+            display: inline-block;
+        }
+
+        .block {
+            display: block;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .max-w-2xl {
+            max-width: 42rem;
+        }
+
+        .max-w-4xl {
+            max-width: 56rem;
+        }
+
+        .max-w-6xl {
+            max-width: 72rem;
+        }
+
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .mt-2 {
+            margin-top: 0.5rem;
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem;
+        }
+
+        .mb-6 {
+            margin-bottom: 1.5rem;
+        }
+
+        .mb-8 {
+            margin-bottom: 2rem;
+        }
+
+        .mb-12 {
+            margin-bottom: 3rem;
+        }
+
+        .mr-2 {
+            margin-right: 0.5rem;
+        }
+
+        .pt-4 {
+            padding-top: 1rem;
+        }
+
+        .pt-6 {
+            padding-top: 1.5rem;
+        }
+
+        .rounded-full {
+            border-radius: 9999px;
+        }
+
+        .opacity-0 {
+            opacity: 0;
+        }
+
+        .group:hover .group-hover\:text-primary {
+            color: var(--primary);
+        }
+
+        .group:hover .group-hover\:opacity-100 {
+            opacity: 1;
+        }
+
+        .transition-smooth {
+            transition: all 0.3s ease;
+        }
+
+        .shadow-glow {
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
+        }
+
+        .shadow-card {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .leading-tight {
+            line-height: 1.25;
+        }
+
+        .tracking-tight {
+            letter-spacing: -0.025em;
+        }
+
+        .overflow-hidden {
+            overflow: hidden;
+        }
+
+        .w-5 {
+            width: 1.25rem;
+        }
+
+        .w-6 {
+            width: 1.5rem;
+        }
+
+        .h-5 {
+            height: 1.25rem;
+        }
+
+        .h-6 {
+            height: 1.5rem;
+        }
+
+        .bg-background {
+            background-color: var(--background);
+        }
+
+        .bg-card {
+            background-color: var(--card);
+        }
+
+        .bg-card\/30 {
+            background-color: rgba(17, 24, 39, 0.3);
+        }
+
+        .bg-card\/20 {
+            background-color: rgba(17, 24, 39, 0.2);
+        }
+
+        .bg-primary\/10 {
+            background-color: rgba(14, 165, 233, 0.1);
+        }
+
+        .bg-secondary\/50 {
+            background-color: rgba(31, 41, 55, 0.5);
+        }
+
+        .bg-muted {
+            background-color: var(--muted);
+        }
+
+        .bg-accent\/10 {
+            background-color: rgba(126, 34, 206, 0.1);
+        }
+
+        .border-border {
+            border-color: var(--border);
+        }
+
+        .border-border\/50 {
+            border-color: rgba(55, 65, 81, 0.5);
+        }
+
+        .border-t {
+            border-top-width: 1px;
+        }
+
+        .backdrop-blur-sm {
+            backdrop-filter: blur(4px);
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen bg-background">
+        <!-- Hero Section -->
+        <section class="section-hero relative overflow-hidden">
+            <div class="container relative space-y-6">
+                <div class="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
+                    Available for Freelance Projects
+                </div>
+                <h1 class="text-4xl font-bold leading-tight tracking-tight md:text-6xl lg:text-7xl">
+                    Software Developer
+                    <span class="block text-primary">Crafting Scalable Web Experiences</span>
+                </h1>
+                <p class="max-w-2xl text-lg text-muted-foreground md:text-xl">
+                    3+ years at Reliance Jio building enterprise applications for 500K+ users. Expert in React.js, Vue.js, Rest APIs and performance optimization. Proven track record of improving load times by 40% and automating workflows.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <button class="btn btn-primary btn-lg" onclick="scrollToSection('contact')">
+                        <i class="fas fa-envelope w-5 h-5 mr-2"></i>
+                        Get in Touch
+                    </button>
+                    <button class="btn btn-secondary btn-lg" onclick="scrollToSection('projects')">
+                        View Projects
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="bg-card/30">
+            <div class="container">
+                <div class="grid gap-12 md:grid-cols-2 md:items-center">
+                    <div class="space-y-6">
+                        <div class="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
+                            About Me
+                        </div>
+                        <h2 class="text-3xl font-bold md:text-4xl">Aaboli Sanas</h2>
+                        <div class="space-y-1 mb-4">
+                            <p class="text-primary font-medium">Software Developer @ Reliance Jio</p>
+                            <p class="text-sm text-muted-foreground">Mumbai, India • 3+ Years Experience</p>
+                        </div>
+                        <p class="text-lg text-muted-foreground">
+                            Software Developer with 3+ years of experience at Reliance Jio, specializing in designing and delivering scalable web applications using React.js, Vue.js, and modern JavaScript. Demonstrated expertise in optimizing performance (achieving up to 40% faster load times), developing interactive data visualizations, and integrating seamlessly with REST APIs and backend systems.
+                        </p>
+                        <p class="text-lg text-muted-foreground">
+                            Engineered and enhanced 5+ enterprise web applications with 99.9% uptime for over 500K active users. Awarded Top Performer (A* Rating) at Jio Platforms (2023) for exceptional project contributions.
+                        </p>
+                        <div class="flex flex-wrap gap-3 pt-4">
+                            <a href="https://www.linkedin.com/in/aaboli-sanas2001/" target="_blank" rel="noopener noreferrer" class="group">
+                                <button class="btn btn-secondary">
+                                    <i class="fab fa-linkedin w-5 h-5 mr-2 group-hover:text-primary"></i>
+                                    LinkedIn
+                                </button>
+                            </a>
+                            <a href="mailto:aabolisanas@gmail.com" class="group">
+                                <button class="btn btn-secondary">
+                                    <i class="fas fa-envelope w-5 h-5 mr-2 group-hover:text-primary"></i>
+                                    Email Me
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="grid gap-4">
+                        <div class="card">
+                            <div class="card-header flex items-center">
+                                <div class="icon-container animate-glow">
+                                    <i class="fas fa-code w-6 h-6 text-primary"></i>
+                                </div>
+                                <div class="space-y-1">
+                                    <h3 class="card-title">Clean Code</h3>
+                                    <p class="card-description">Writing maintainable, scalable code following best practices and modern standards</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header flex items-center">
+                                <div class="icon-container animate-glow">
+                                    <i class="fas fa-palette w-6 h-6 text-primary"></i>
+                                </div>
+                                <div class="space-y-1">
+                                    <h3 class="card-title">Design Focus</h3>
+                                    <p class="card-description">Creating beautiful, intuitive interfaces that users love to interact with</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header flex items-center">
+                                <div class="icon-container animate-glow">
+                                    <i class="fas fa-bolt w-6 h-6 text-primary"></i>
+                                </div>
+                                <div class="space-y-1">
+                                    <h3 class="card-title">Fast Delivery</h3>
+                                    <p class="card-description">Efficient development process ensuring timely project completion without compromising quality</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills & Certifications Section -->
+        <section class="bg-card/20">
+            <div class="container space-y-12">
+                <!-- Skills -->
+                <div class="space-y-8">
+                    <h2 class="text-2xl font-bold md:text-3xl">Technical Expertise</h2>
+                    <div class="grid gap-4 md:grid-cols-3">
+                        <div class="card group">
+                            <div class="card-header">
+                                <h3 class="card-title group-hover:text-primary">Frontend Frameworks</h3>
+                                <p class="card-description">React.js, Vue.js, Redux, PrimeVue, Next.js</p>
+                            </div>
+                        </div>
+                        <div class="card group">
+                            <div class="card-header">
+                                <h3 class="card-title group-hover:text-primary">Languages & Styling</h3>
+                                <p class="card-description">JavaScript, TypeScript, HTML5, CSS3, Tailwind CSS, Bootstrap</p>
+                            </div>
+                        </div>
+                        <div class="card group">
+                            <div class="card-header">
+                                <h3 class="card-title group-hover:text-primary">Backend & Tools</h3>
+                                <p class="card-description">Spring Boot, REST APIs, Elasticsearch, Git, Docker, Nginx</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div class="space-y-8">
+                    <h2 class="text-2xl font-bold md:text-3xl">Certifications & Achievements</h2>
+                    <div class="grid gap-4 md:grid-cols-2">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="flex items-start justify-between">
+                                    <div class="flex-1">
+                                        <h3 class="card-title">Top Performer Award (A* Rating)</h3>
+                                        <div class="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                                            <span class="text-primary font-medium">Jio Platforms Limited</span>
+                                            <span>•</span>
+                                            <span>2023</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="card-description">Recognized for exceptional contributions to key enterprise projects</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="flex items-start justify-between">
+                                    <div class="flex-1">
+                                        <h3 class="card-title">2nd Rank in Department</h3>
+                                        <div class="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                                            <span class="text-primary font-medium">V.P.M's Polytechnic</span>
+                                            <span>•</span>
+                                            <span>2019</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="card-description">Ranked 2nd among 120 students in Information Technology</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <div class="container">
+                <div class="space-y-6 mb-12">
+                    <h2 class="text-3xl font-bold md:text-4xl">Project Portfolio</h2>
+                    <p class="text-lg text-muted-foreground">
+                        Enterprise applications, personal projects, and freelance work showcasing full-stack development expertise
+                    </p>
+                </div>
+                
+                <div class="grid gap-6 md:grid-cols-2" id="projects-grid">
+                    <!-- Projects will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container max-w-4xl text-center">
+                <div class="space-y-6">
+                    <h2 class="text-3xl font-bold md:text-4xl">Let's Build Something Together</h2>
+                    <p class="mx-auto max-w-2xl text-lg text-muted-foreground">
+                        Available for freelance projects. Whether you need a complete web application or want to enhance your existing platform, let's discuss how I can help bring your vision to life.
+                    </p>
+                    <div class="flex flex-wrap items-center justify-center gap-4 pt-6">
+                        <a href="mailto:aabolisanas@gmail.com">
+                            <button class="btn btn-primary btn-lg">
+                                <i class="fas fa-envelope w-5 h-5 mr-2"></i>
+                                aabolisanas@gmail.com
+                            </button>
+                        </a>
+                        <a href="https://www.linkedin.com/in/aaboli-sanas2001/" target="_blank" rel="noopener noreferrer">
+                            <button class="btn btn-secondary btn-lg">
+                                <i class="fab fa-linkedin w-5 h-5 mr-2"></i>
+                                Connect on LinkedIn
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="border-t border-border">
+            <div class="container max-w-6xl text-center text-sm text-muted-foreground">
+                <p>© 2024 Aaboli Sanas • Software Developer • Mumbai, India</p>
+                <p class="mt-2">Available for freelance projects • aabolisanas@gmail.com • +91 8879350212</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Projects data
+        const projects = [
+            {
+    title: "HHC Platform",
+    company: "Jio Platforms Limited",
+    description: "Data analytics platform for Jio AirFiber with interactive heatmaps, drill-down visualizations, and custom map layers for coverage analysis.",
+    tech: ["Vue.js 3", "PrimeVue", "Tailwind CSS", "Mapbox", "GeoJSON", "Elasticsearch"],
+    category: "Data Analytics",
+    impact: "Jio Users",
+    featured: false
+},
+            {
+                title: "Data Access Management Platform",
+                company: "Jio Platforms Limited",
+                description: "Developed combined quiz/access system managing 5,000+ questions and 200+ admin users. Built comprehensive admin dashboard with question CRUD operations, approval workflow timelines, role-based access controls, and metadata search. Automated processes reduced admin workload by 30%.",
+                tech: ["Vue.js", "Spring Boot", "REST APIs", "RBAC", "Elasticsearch"],
+                category: "Enterprise Platform",
+                impact: "30% Efficiency Gain",
+                featured: false
+            },
+            {
+                title: "Mumbai Real Estate Platform",
+                company: "Freelance Project",
+                description: "Comprehensive property listing platform for Mumbai broker with advanced search, property management, sell/buy forms, and interactive property showcase. Built with modern React architecture and responsive design.",
+                tech: ["React.js", "Javascript", "Tailwind CSS", "Interactive UI", "Springboot"],
+                category: "Real Estate",
+                featured: true,
+                impact: "Current Project"
+            },
+             {
+                title: "Mind Games Cafe",
+                company: "Freelance Project",
+                description: "Interactive website for a gaming cafe featuring online booking system, game catalog, and event management capabilities.",
+                tech: ["React.js", "UI/UX Design", "Booking System", "Firebase", "Hostinger", "CDN"],
+                link: "https://mindgamescafe.in/",
+                category: "Entertainment",
+                featured: false
+            },
+            // {
+            //     title: "Video Streaming Platform",
+            //     company: "Personal Project",
+            //     description: "Implemented adaptive bitrate streaming prototype with optimized video playback using HLS protocol. Features dark/light mode toggle using Context API and efficient video processing pipeline.",
+            //     tech: ["React.js", "Spring Boot", "FFmpeg", "HLS"],
+            //     category: "Media Streaming",
+            //     featured: false
+            // },
+            {
+                title: " Frontend Wireframe in React (LifeGrid) - Task & Budget Manager",
+                company: "Personal Project",
+                description: "Notepad-style task manager with built-in expense tracking. Unified interface for productivity and finances with smart dashboard, hierarchical task view, and budget breakdown. Features analytics dashboard with visual charts and powerful filtering.",
+                tech: ["React.js", "Chakra UI", "Framer Motion", "Data Visualization"],
+                category: "Productivity",
+                link: "https://lifegrid-webapp.vercel.app/",
+                featured: false
+            },
+           
+        ];
+
+        // Initialize projects
+        function initProjects() {
+            const projectsGrid = document.getElementById('projects-grid');
+            
+            projects.forEach((project, index) => {
+                const projectCard = createProjectCard(project, index);
+                projectsGrid.appendChild(projectCard);
+            });
+        }
+
+        // Create project card element
+        function createProjectCard(project, index) {
+            const card = document.createElement('div');
+            card.className = `card group ${project.featured ? 'featured' : ''}`;
+            
+            card.innerHTML = `
+                <div class="card-header">
+                    <div class="flex items-center justify-between flex-wrap gap-2 mb-3">
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <span class="project-badge bg-primary/10 text-primary">
+                                ${project.category}
+                            </span>
+                            ${project.company ? `
+                                <span class="project-badge bg-muted text-muted-foreground">
+                                    ${project.company}
+                                </span>
+                            ` : ''}
+                        </div>
+                        ${project.impact ? `
+                            <span class="project-badge bg-accent/10 text-accent">
+                                ${project.impact}
+                            </span>
+                        ` : ''}
+                    </div>
+                    <h3 class="card-title flex items-center justify-between group-hover:text-primary transition-smooth">
+                        <span>${project.title}</span>
+                        ${project.link ? `
+                            <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="opacity-0 transition-smooth group-hover:opacity-100">
+                                <i class="fas fa-external-link-alt w-5 h-5 text-primary"></i>
+                            </a>
+                        ` : ''}
+                    </h3>
+                    <p class="card-description mt-2">
+                        ${project.description}
+                    </p>
+                </div>
+                <div class="card-content">
+                    <div class="flex flex-wrap gap-2">
+                        ${project.tech.map(tech => `
+                            <span class="tech-tag hover:bg-secondary transition-smooth">
+                                ${tech}
+                            </span>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        // Smooth scroll function
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Scroll animations
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all animated elements
+            document.querySelectorAll('.card, .space-y-6 > *').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Add hover effects for buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.05)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+        });
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize projects
+            initProjects();
+            
+            // Initialize scroll animations
+            initScrollAnimations();
+        });
+    </script>
+</body>
+</html>
