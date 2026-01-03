@@ -143,7 +143,21 @@
             gap: 3rem;
             align-items: center;
         }
-        
+        @media (max-width: 899px) {
+  .hero-layout {
+    text-align: center;
+  }
+
+  .hero-layout > div:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-layout p {
+    text-align: center;
+  }
+}
         @media (min-width: 900px) {
             .hero-layout {
                 grid-template-columns: 1.2fr 0.8fr; /* Side by side on Desktop */
@@ -153,11 +167,30 @@
         
         /* Arches Visual */
         .arch-container { 
-            position: relative; 
-            width: 320px; 
-            height: 420px; 
-            margin: 0 auto; /* Center on mobile */
-        }
+    position: relative; 
+    width: 100%;
+    max-width: 320px;
+    height: 460px;
+    margin: 0 auto;
+}
+@media (max-width: 480px) {
+    .arch-container {
+        max-width: 260px;
+        height: 330px;
+    }
+
+    .arch-back-1 {
+        transform: rotate(3deg) translate(10px, 8px);
+    }
+
+    .arch-back-2 {
+        transform: rotate(-6deg) translate(-10px, 12px);
+    }
+
+    .floating-icons i {
+        font-size: 2.2rem;
+    }
+}
         @media (min-width: 900px) {
             .arch-container { margin: 0; margin-left: auto; } /* Align right on desktop */
         }
@@ -196,6 +229,21 @@
             margin-right: 0.5rem;
             margin-bottom: 0.5rem;
         }
+        /* Keep CTA buttons in one row on mobile */
+@media (max-width: 600px) {
+  .hero .flex {
+    flex-wrap: nowrap;
+    gap: 1rem;
+  }
+
+  .hero .btn {
+    flex: 1;
+    padding: 0.9rem 1rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+}
+
     </style>
 </head>
 <body>
