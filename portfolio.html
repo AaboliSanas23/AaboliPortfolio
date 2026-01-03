@@ -205,9 +205,12 @@
             <div class="nav-logo"><i class="fas fa-cube"></i> Aaboli.</div>
             <div style="display: flex; gap: 1rem; align-items: center;">
                 <a href="#projects" style="text-decoration: none; color: black; font-weight: 700; margin-right: 1rem; display: none; @media(min-width:768px){display:block;}">Work</a>
-                <a href="Aaboli_Sanas_Resume.pdf" download class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">
-                    Resume <i class="fas fa-arrow-down" style="margin-left: 5px;"></i>
+                <a href="mailto:aabolisanas23@gmail.com" class="btn btn-primary">
+                    <i class="fas fa-envelope" style="margin-right: 8px;"></i> Email Me
                 </a>
+                <!-- <a href="Aaboli_Sanas_Resume.pdf" download class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">
+                    Resume <i class="fas fa-arrow-down" style="margin-left: 5px;"></i>
+                </a> -->
             </div>
         </div>
     </nav>
@@ -228,9 +231,12 @@
                 </p>
                 
                 <div class="flex" style="gap: 1.5rem; flex-wrap: wrap;">
-                    <a href="Aaboli_Sanas_Resume.pdf" download="Aaboli_Sanas_Resume" class="btn btn-resume">
+                    <!-- <a href="Aaboli_Sanas_Resume.pdf" download="Aaboli_Sanas_Resume" class="btn btn-resume">
                         <i class="fas fa-file-download" style="margin-right: 10px;"></i> Download Resume
-                    </a>
+                    </a> -->
+                    <a href="mailto:aabolisanas23@gmail.com" class="btn btn-resume">
+                    <i class="fas fa-envelope" style="margin-right: 8px;"></i> Contact
+                </a>
                     <a href="#projects" class="btn btn-secondary">
                         View Work
                     </a>
@@ -341,64 +347,71 @@
 
     <script>
         // Data from Resume
-        const projects = [
-            {
-                title: "Home Health Card Platform",
-                company: "Jio Platforms Limited",
-                desc: "Analytics platform for 200K+ Jio AirFiber users. Features interactive coverage heatmaps and real-time network analysis.",
-                tech: ["Vue.js 3", "Mapbox", "Elasticsearch", "GeoJSON"],
-                link: null
-            },
-            {
-                title: "Data Access Management",
-                company: "Jio Platforms Limited",
-                desc: "Admin dashboard managing 5,000+ questions. Automated approval workflows reduced review cycle time by 30%.",
-                tech: ["Vue.js", "Spring Boot", "RBAC", "REST APIs"],
-                link: null
-            },
-            {
-                title: "Mumbai Real Estate Platform",
-                company: "Ongoing Freelance Project",
-                desc: "Property listing platform with advanced search, buy/sell workflows, and responsive gallery UIs.",
-                tech: ["React.js", "Tailwind CSS", "Spring Boot"],
-                link: null
-            },
-            {
-                title: "Travel Booking UI",
-                company: "Personal Project",
-                desc: "Modern multi-step booking interface with animated transitions, seat selection, and dynamic form rendering.",
-                tech: ["React.js", "Framer Motion", "Tailwind"],
-                link: "https://travelbookr.vercel.app/"
-            },
-            {
-                title: "LifeGrid Workspace",
-                company: "Personal Project",
-                desc: "Smart workspace combining task management with budgeting. Features hierarchical task structures and analytics.",
-                tech: ["React.js", "Chakra UI", "Dashboard"],
-                link: "https://lifegrid-webapp.vercel.app"
-            }
-        ];
+       const projects = [
+        {
+            title: "Home Health Card Platform",
+            company: "Jio Platforms Limited",
+            desc: "Analytics platform for 200K+ Jio AirFiber users. Features interactive coverage heatmaps and real-time network analysis.",
+            tech: ["Vue.js 3", "Mapbox", "Elasticsearch", "GeoJSON"],
+            link: null
+        },
+        {
+            title: "Data Access Management",
+            company: "Jio Platforms Limited",
+            desc: "Admin dashboard managing 5,000+ questions. Automated approval workflows reduced review cycle time by 30%.",
+            tech: ["Vue.js", "Spring Boot", "RBAC", "REST APIs"],
+            link: null
+        },
+        {
+            title: "Mind Games Cafe",
+            company: "Client Project",
+            desc: "Official website for a modern board gaming cafe in Dombivli. Showcases the cafe story, 320+ international board games, and community-driven experiences with a strong brand identity.",
+            tech: ["HTML", "CSS", "Responsive UI", "Brand Storytelling"],
+            link: "https://www.mindgamescafe.in/"
+        },
+        {
+            title: "Mumbai Real Estate Platform",
+            company: "Ongoing Client Project",
+            desc: "Property listing platform with advanced search, buy/sell workflows, and responsive gallery UIs.",
+            tech: ["React.js", "Tailwind CSS", "Spring Boot"],
+            link: null
+        },
+        {
+            title: "Travel Booking UI",
+            company: "Personal Project",
+            desc: "Modern multi-step booking interface with animated transitions, seat selection, and dynamic form rendering.",
+            tech: ["React.js", "Framer Motion", "Tailwind"],
+            link: "https://travelbookr.vercel.app/"
+        },
+        {
+            title: "LifeGrid Workspace UI",
+            company: "Personal Project",
+            desc: "Smart workspace combining task management with budgeting. Features hierarchical task structures and analytics.",
+            tech: ["React.js", "Chakra UI", "Dashboard"],
+            link: "https://lifegrid-webapp.vercel.app"
+        }
+    ];
 
         const grid = document.getElementById('projects-grid');
 
         projects.forEach(p => {
-            const card = document.createElement('div');
-            card.className = 'pop-card';
-            card.innerHTML = `
-                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
-                    <span style="font-size: 0.8rem; font-weight: 700; background: var(--accent-yellow); padding: 0.2rem 0.5rem; border: 1px solid black;">
-                        ${p.company}
-                    </span>
-                    ${p.link ? `<a href="${p.link}" target="_blank" style="color: var(--text-black);"><i class="fas fa-external-link-alt"></i></a>` : ''}
-                </div>
-                <h3 style="margin-bottom: 0.5rem;">${p.title}</h3>
-                <p style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">${p.desc}</p>
-                <div style="margin-top: auto;">
-                    ${p.tech.map(t => `<span class="tech-pill">${t}</span>`).join('')}
-                </div>
-            `;
-            grid.appendChild(card);
-        });
+        const card = document.createElement('div');
+        card.className = 'pop-card';
+        card.innerHTML = `
+            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+                <span style="font-size: 0.8rem; font-weight: 700; background: var(--accent-yellow); padding: 0.2rem 0.5rem; border: 1px solid black;">
+                    ${p.company}
+                </span>
+                ${p.link ? `<a href="${p.link}" target="_blank" style="color: var(--text-black);"><i class="fas fa-external-link-alt"></i></a>` : ''}
+            </div>
+            <h3 style="margin-bottom: 0.5rem;">${p.title}</h3>
+            <p style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">${p.desc}</p>
+            <div style="margin-top: auto;">
+                ${p.tech.map(t => `<span class="tech-pill">${t}</span>`).join('')}
+            </div>
+        `;
+        grid.appendChild(card);
+    });
     </script>
 </body>
 </html>
