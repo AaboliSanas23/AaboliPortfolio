@@ -3,1014 +3,401 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aaboli Sanas - Software Developer</title>
+    <title>Aaboli Sanas | Software Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --background: #0a0a0a;
-            --foreground: #fafafa;
-            --primary: #0ea5e9;
-            --primary-foreground: #082f49;
-            --secondary: #1f2937;
-            --secondary-foreground: #f9fafb;
-            --muted: #374151;
-            --muted-foreground: #9ca3af;
-            --accent: #7e22ce;
-            --accent-foreground: #faf5ff;
-            --card: #111827;
-            --card-foreground: #f9fafb;
-            --border: #374151;
-            --radius: 0.5rem;
+            /* Retro-Pop Palette */
+            --bg-cream: #FFF9F0;
+            --text-black: #1a1a1a;
+            --accent-yellow: #FFD54F; 
+            --accent-mint: #A7F3D0;   
+            --accent-pink: #FF90B3; 
+            --accent-blue: #BAE6FD;   
+            
+            --bold-border: 3px solid var(--text-black);
+            --hard-shadow: 6px 6px 0px var(--text-black);
+            --hard-shadow-hover: 3px 3px 0px var(--text-black);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--background);
-            color: var(--foreground);
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-black);
             line-height: 1.6;
-        }
-        body {
-  background: radial-gradient(circle at 30% 20%, rgba(14,165,233,0.12), transparent 60%),
-              radial-gradient(circle at 80% 90%, rgba(126,34,206,0.12), transparent 70%),
-              #0a0a0a;
-  position: relative;
-}
-
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background: url("https://grainy-gradients.vercel.app/noise.svg");
-  opacity: 0.08;
-}
-.separator {
-  height: 1px;
-  width: 100%;
-  margin: 4rem auto;
-  background: linear-gradient(90deg,
-    transparent,
-    rgba(14,165,233,0.6),
-    transparent
-  );
-}
-        .min-h-screen {
-            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: radial-gradient(#FFD54F 1.5px, transparent 1.5px), radial-gradient(#A7F3D0 1.5px, transparent 1.5px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
         }
 
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
+        /* --- Typography --- */
+        h1, h2, h3 { font-weight: 800; line-height: 1.1; }
+        h1 { font-size: 3rem; margin-bottom: 1rem; }
+        h2 { font-size: 2.5rem; position: relative; display: inline-block; margin-bottom: 2rem; }
+        h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+        
+        @media (min-width: 768px) { h1 { font-size: 4.5rem; } }
 
-        /* Spacing utilities */
-        .space-y-2 > * + * {
-            margin-top: 0.5rem;
-        }
-
-        .space-y-3 > * + * {
-            margin-top: 0.75rem;
-        }
-
-        .space-y-4 > * + * {
-            margin-top: 1rem;
-        }
-
-        .space-y-6 > * + * {
-            margin-top: 1.5rem;
-        }
-
-        .space-y-8 > * + * {
-            margin-top: 2rem;
-        }
-
-        .space-y-12 > * + * {
-            margin-top: 3rem;
-        }
-
-        .gap-2 {
-            gap: 0.5rem;
-        }
-
-        .gap-3 {
-            gap: 0.75rem;
-        }
-
-        .gap-4 {
-            gap: 1rem;
-        }
-
-        .gap-6 {
-            gap: 1.5rem;
-        }
-
-        /* Section spacing */
-        section {
-            padding: 5rem 0;
-        }
-
-        /* Typography */
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        h1 {
-            font-size: 2.25rem;
-        }
-
-        h2 {
-            font-size: 1.875rem;
-        }
-
-        h3 {
-            font-size: 1.5rem;
-        }
-
+        /* --- Layout --- */
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+        .flex { display: flex; }
+        .grid { display: grid; gap: 2rem; }
+        .md-grid-cols-2 { grid-template-columns: 1fr; }
+        
         @media (min-width: 768px) {
-            h1 {
-                font-size: 3.75rem;
-            }
-            
-            h2 {
-                font-size: 2.25rem;
-            }
-            
-            h3 {
-                font-size: 1.875rem;
-            }
+            .md-grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
         }
 
-        .text-sm {
-            font-size: 0.875rem;
-        }
-
-        .text-lg {
-            font-size: 1.125rem;
-        }
-
-        .text-xl {
-            font-size: 1.25rem;
-        }
-
-        .text-2xl {
-            font-size: 1.5rem;
-        }
-
-        .text-3xl {
-            font-size: 1.875rem;
-        }
-
-        .text-4xl {
-            font-size: 2.25rem;
-        }
-
-        .font-medium {
-            font-weight: 500;
-        }
-
-        .font-bold {
-            font-weight: 700;
-        }
-
-        .text-primary {
-            color: var(--primary);
-        }
-
-        .text-muted-foreground {
-            color: var(--muted-foreground);
-        }
-
-        .text-foreground {
-            color: var(--foreground);
-        }
-
-        /* Layout */
-        .flex {
-            display: flex;
-        }
-
-        .flex-wrap {
-            flex-wrap: wrap;
-        }
-
-        .flex-col {
-            flex-direction: column;
-        }
-
-        .flex-row {
-            flex-direction: row;
-        }
-
-        .items-center {
-            align-items: center;
-        }
-
-        .items-start {
-            align-items: flex-start;
-        }
-
-        .justify-center {
-            justify-content: center;
-        }
-
-        .justify-between {
-            justify-content: space-between;
-        }
-
-        .grid {
-            display: grid;
-        }
-
-        .grid-cols-1 {
-            grid-template-columns: repeat(1, minmax(0, 1fr));
-        }
-
-        .grid-cols-2 {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .grid-cols-3 {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-
-        @media (min-width: 768px) {
-            .md\:grid-cols-2 {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-            
-            .md\:grid-cols-3 {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
-            
-            .md\:items-center {
-                align-items: center;
-            }
-        }
-
-        /* Cards */
-        .card {
-            background-color: var(--card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            transform: translateY(-5px);
-            border-color: var(--primary);
-        }
-
-        .card-header {
-            margin-bottom: 1rem;
-        }
-
-        .card-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .card-description {
-            color: var(--muted-foreground);
-            font-size: 0.875rem;
-        }
-
-        .card-content {
-            margin-top: 1rem;
-        }
-
-        /* Buttons */
+        /* --- Buttons --- */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            border-radius: var(--radius);
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            transition: all 0.3s ease;
+            padding: 1rem 2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: var(--bold-border);
+            background: white;
+            color: var(--text-black);
+            box-shadow: var(--hard-shadow);
+            transition: all 0.2s ease;
             cursor: pointer;
-            border: none;
-            font-size: 0.875rem;
-        }
-
-        .btn-lg {
-            padding: 0.75rem 1.5rem;
             font-size: 1rem;
+            letter-spacing: 0.5px;
         }
 
-        .btn-primary {
-            background-color: var(--primary);
-            color: var(--primary-foreground);
+        .btn:hover {
+            transform: translate(3px, 3px);
+            box-shadow: var(--hard-shadow-hover);
         }
 
-        .btn-primary:hover {
-            background-color: #0284c7;
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(14, 165, 233, 0.4);
+        .btn-primary { background: var(--accent-yellow); }
+        .btn-secondary { background: white; }
+        
+        .btn-resume { 
+            background: var(--accent-pink); 
+            color: var(--text-black);
+            padding: 1.2rem 2.5rem;
+            font-size: 1.1rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        
+        .btn-resume:hover {
+            animation: none;
+            background: #ff749f;
+            transform: translate(3px, 3px);
+            box-shadow: var(--hard-shadow-hover);
         }
 
-        .btn-secondary {
-            background-color: var(--secondary);
-            color: var(--secondary-foreground);
-        }
-
-        .btn-secondary:hover {
-            background-color: #374151;
-            transform: scale(1.05);
-        }
-
-        /* Badges */
-        .project-badge {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-
-        .tech-tag {
-            display: inline-block;
-            padding: 0.25rem 0.5rem;
-            background-color: var(--secondary);
-            border: 1px solid var(--border);
-            border-radius: 0.375rem;
-            font-size: 0.75rem;
-            color: var(--secondary-foreground);
-            transition: all 0.3s ease;
-        }
-
-        .tech-tag:hover {
-            background-color: var(--muted);
-        }
-
-        /* Hero section */
-        .section-hero {
-            position: relative;
-            overflow: hidden;
-            padding: 5rem 1.5rem;
-        }
-
-        .section-hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, transparent 50%, transparent 100%);
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes glow {
-            0%, 100% {
-                box-shadow: 0 0 5px rgba(14, 165, 233, 0.5);
-            }
-            50% {
-                box-shadow: 0 0 20px rgba(14, 165, 233, 0.8);
-            }
-        }
-
-        .animate-fade-in {
-            animation: fadeIn 1s ease-out forwards;
-            opacity: 0;
-        }
-
-        .animate-slide-in {
-            animation: slideIn 1s ease-out forwards;
-            opacity: 0;
-        }
-
-        .animate-glow {
-            animation: glow 2s ease-in-out infinite;
-        }
-
-        .icon-container {
-            background-color: rgba(14, 165, 233, 0.1);
-            border-radius: 0.5rem;
-            padding: 0.75rem;
-            margin-right: 1rem;
-        }
-
-        /* Featured project */
-        .featured {
-            grid-column: 1 / -1;
-            box-shadow: 0 0 30px rgba(14, 165, 233, 0.3);
-        }
-
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 2rem 0;
-        }
-
-        /* Utility classes */
-        .relative {
+        /* --- Pop Cards --- */
+        .pop-card {
+            background: white;
+            border: var(--bold-border);
+            padding: 2rem;
+            box-shadow: var(--hard-shadow);
+            transition: all 0.2s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
             position: relative;
         }
+        .pop-card:hover { transform: translate(3px, 3px); box-shadow: var(--hard-shadow-hover); }
 
-        .absolute {
+        .card-strip {
             position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 10px;
+            border-right: 3px solid black;
         }
 
-        .inset-0 {
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
+        /* --- Navbar --- */
+        nav { padding: 1.5rem 0; background: var(--bg-cream); border-bottom: var(--bold-border); position: sticky; top: 0; z-index: 100; }
+        .nav-logo { font-size: 1.5rem; font-weight: 900; }
+        
+        /* --- Hero Section Styles --- */
+        .hero { 
+            padding: 4rem 0; 
+            min-height: 85vh; 
+            display: flex; 
+            align-items: center; 
+            position: relative; 
+            overflow: hidden; 
+        }
+        
+        /* Grid Layout for Hero: Ensures Text is Left, Visual is Right */
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 1fr; /* Stack on mobile */
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        @media (min-width: 900px) {
+            .hero-layout {
+                grid-template-columns: 1.2fr 0.8fr; /* Side by side on Desktop */
+                text-align: left;
+            }
+        }
+        
+        /* Arches Visual */
+        .arch-container { 
+            position: relative; 
+            width: 320px; 
+            height: 420px; 
+            margin: 0 auto; /* Center on mobile */
+        }
+        @media (min-width: 900px) {
+            .arch-container { margin: 0; margin-left: auto; } /* Align right on desktop */
         }
 
-        .inline-block {
+        .arch {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            border-radius: 200px 200px 0 0; border: var(--bold-border); background: white;
+            transition: transform 0.3s ease;
+        }
+        .arch-back-1 { background: var(--accent-yellow); transform: rotate(5deg) translate(20px, 10px); z-index: 1; }
+        .arch-back-2 { background: var(--accent-pink); transform: rotate(-10deg) translate(-20px, 20px); z-index: 0; }
+        .arch-main { z-index: 2; display: flex; flex-direction: column; justify-content: center; align-items: center; overflow: hidden; }
+        
+        .floating-icons i { font-size: 3rem; margin: 0 10px; animation: float 3s ease-in-out infinite; }
+        .float-2 { animation-delay: 0.5s; } .float-3 { animation-delay: 1s; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        /* --- Feature Grid --- */
+        .feature-icon {
+            font-size: 2rem; margin-bottom: 1rem; display: inline-block;
+            padding: 10px; border: 2px solid black; border-radius: 8px;
+            box-shadow: 4px 4px 0 black; background: white;
+        }
+
+        /* --- Footer --- */
+        footer { padding: 3rem 0; border-top: var(--bold-border); background: white; text-align: center; }
+        
+        .tech-pill {
             display: inline-block;
-        }
-
-        .block {
-            display: block;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .max-w-2xl {
-            max-width: 42rem;
-        }
-
-        .max-w-4xl {
-            max-width: 56rem;
-        }
-
-        .max-w-6xl {
-            max-width: 72rem;
-        }
-
-        .mx-auto {
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .mt-2 {
-            margin-top: 0.5rem;
-        }
-
-        .mb-4 {
-            margin-bottom: 1rem;
-        }
-
-        .mb-6 {
-            margin-bottom: 1.5rem;
-        }
-
-        .mb-8 {
-            margin-bottom: 2rem;
-        }
-
-        .mb-12 {
-            margin-bottom: 3rem;
-        }
-
-        .mr-2 {
+            padding: 0.3rem 0.8rem;
+            background: var(--text-black);
+            color: white;
+            font-weight: 700;
+            font-size: 0.75rem;
+            border-radius: 50px;
             margin-right: 0.5rem;
-        }
-
-        .pt-4 {
-            padding-top: 1rem;
-        }
-
-        .pt-6 {
-            padding-top: 1.5rem;
-        }
-
-        .rounded-full {
-            border-radius: 9999px;
-        }
-
-        .opacity-0 {
-            opacity: 0;
-        }
-
-        .group:hover .group-hover\:text-primary {
-            color: var(--primary);
-        }
-
-        .group:hover .group-hover\:opacity-100 {
-            opacity: 1;
-        }
-
-        .transition-smooth {
-            transition: all 0.3s ease;
-        }
-
-        .shadow-glow {
-            box-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
-        }
-
-        .shadow-card {
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .leading-tight {
-            line-height: 1.25;
-        }
-
-        .tracking-tight {
-            letter-spacing: -0.025em;
-        }
-
-        .overflow-hidden {
-            overflow: hidden;
-        }
-
-        .w-5 {
-            width: 1.25rem;
-        }
-
-        .w-6 {
-            width: 1.5rem;
-        }
-
-        .h-5 {
-            height: 1.25rem;
-        }
-
-        .h-6 {
-            height: 1.5rem;
-        }
-
-        .bg-background {
-            background-color: var(--background);
-        }
-
-        .bg-card {
-            background-color: var(--card);
-        }
-
-        .bg-card\/30 {
-            background-color: rgba(17, 24, 39, 0.3);
-        }
-
-        .bg-card\/20 {
-            background-color: rgba(17, 24, 39, 0.2);
-        }
-
-        .bg-primary\/10 {
-            background-color: rgba(14, 165, 233, 0.1);
-        }
-
-        .bg-secondary\/50 {
-            background-color: rgba(31, 41, 55, 0.5);
-        }
-
-        .bg-muted {
-            background-color: var(--muted);
-        }
-
-        .bg-accent\/10 {
-            background-color: rgba(126, 34, 206, 0.1);
-        }
-
-        .border-border {
-            border-color: var(--border);
-        }
-
-        .border-border\/50 {
-            border-color: rgba(55, 65, 81, 0.5);
-        }
-
-        .border-t {
-            border-top-width: 1px;
-        }
-
-        .backdrop-blur-sm {
-            backdrop-filter: blur(4px);
+            margin-bottom: 0.5rem;
         }
     </style>
 </head>
 <body>
-    <div class="min-h-screen bg-background">
-        <!-- Hero Section -->
-        <section class="section-hero relative overflow-hidden">
-            <div class="container relative space-y-6">
-                <div class="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
-                    Available for Freelance Projects
-                </div>
-                <h1 class="text-4xl font-bold leading-tight tracking-tight md:text-6xl lg:text-7xl">
+
+    <nav>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="nav-logo"><i class="fas fa-cube"></i> Aaboli.</div>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <a href="#projects" style="text-decoration: none; color: black; font-weight: 700; margin-right: 1rem; display: none; @media(min-width:768px){display:block;}">Work</a>
+                <a href="Aaboli_Sanas_Resume.pdf" download class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">
+                    Resume <i class="fas fa-arrow-down" style="margin-left: 5px;"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container hero-layout">
+            
+            <div style="z-index: 2;">
+                <div style="display: inline-block; background: var(--accent-pink); border: var(--bold-border); padding: 0.5rem 1rem; font-weight: 700; margin-bottom: 1.5rem; box-shadow: 4px 4px 0 black;">
                     Software Developer
-                    <span class="block text-primary">Crafting Scalable Web Experiences</span>
-                </h1>
-                <p class="max-w-2xl text-lg text-muted-foreground md:text-xl">
-                    3+ years at Reliance Jio building enterprise applications for 500K+ users. Expert in React.js, Vue.js, Rest APIs and performance optimization. Proven track record of improving load times by 40% and automating workflows.
+                </div>
+                <h1>Aaboli Sanas</h1>
+                <h2 style="font-size: 1.5rem; background: var(--accent-mint); padding: 0.4rem 1.2rem; margin-bottom: 1.5rem; border: 2px solid black; transform: rotate(-1deg);">
+                    3+ Years @ Reliance Jio
+                </h2>
+                <p style="margin-bottom: 2.5rem; max-width: 500px; font-size: 1.1rem;">
+                    Building scalable enterprise applications for <strong>500K+ users</strong>. Expert in React.js, Vue.js, and Spring Boot with a focus on <strong>40% performance optimization</strong>.
                 </p>
-                <div class="flex flex-wrap gap-4">
-                    <button class="btn btn-primary btn-lg" onclick="scrollToSection('contact')">
-                        <i class="fas fa-envelope w-5 h-5 mr-2"></i>
-                        Get in Touch
-                    </button>
-                    <button class="btn btn-secondary btn-lg" onclick="scrollToSection('projects')">
-                        View Projects
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="bg-card/30">
-            <div class="container">
-                <div class="grid gap-12 md:grid-cols-2 md:items-center">
-                    <div class="space-y-6">
-                        <div class="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
-                            About Me
-                        </div>
-                        <h2 class="text-3xl font-bold md:text-4xl">Aaboli Sanas</h2>
-                        <div class="space-y-1 mb-4">
-                            <p class="text-primary font-medium">Software Developer @ Reliance Jio</p>
-                            <p class="text-sm text-muted-foreground">Mumbai, India • 3+ Years Experience</p>
-                        </div>
-                        <p class="text-lg text-muted-foreground">
-                            Software Developer with 3+ years of experience at Reliance Jio, specializing in designing and delivering scalable web applications using React.js, Vue.js, and modern JavaScript. Demonstrated expertise in optimizing performance (achieving up to 40% faster load times), developing interactive data visualizations, and integrating seamlessly with REST APIs and backend systems.
-                        </p>
-                        <p class="text-lg text-muted-foreground">
-                            Engineered and enhanced 5+ enterprise web applications with 99.9% uptime for over 500K active users. Awarded Top Performer (A* Rating) at Jio Platforms (2023) for exceptional project contributions.
-                        </p>
-                        <div class="flex flex-wrap gap-3 pt-4">
-                            <a href="https://www.linkedin.com/in/aaboli-sanas2001/" target="_blank" rel="noopener noreferrer" class="group">
-                                <button class="btn btn-secondary">
-                                    <i class="fab fa-linkedin w-5 h-5 mr-2 group-hover:text-primary"></i>
-                                    LinkedIn
-                                </button>
-                            </a>
-                            <a href="mailto:aabolisanas@gmail.com" class="group">
-                                <button class="btn btn-secondary">
-                                    <i class="fas fa-envelope w-5 h-5 mr-2 group-hover:text-primary"></i>
-                                    Email Me
-                                </button>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="grid gap-4">
-                        <div class="card">
-                            <div class="card-header flex items-center">
-                                <div class="icon-container animate-glow">
-                                    <i class="fas fa-code w-6 h-6 text-primary"></i>
-                                </div>
-                                <div class="space-y-1">
-                                    <h3 class="card-title">Clean Code</h3>
-                                    <p class="card-description">Writing maintainable, scalable code following best practices and modern standards</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card">
-                            <div class="card-header flex items-center">
-                                <div class="icon-container animate-glow">
-                                    <i class="fas fa-palette w-6 h-6 text-primary"></i>
-                                </div>
-                                <div class="space-y-1">
-                                    <h3 class="card-title">Design Focus</h3>
-                                    <p class="card-description">Creating beautiful, intuitive interfaces that users love to interact with</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card">
-                            <div class="card-header flex items-center">
-                                <div class="icon-container animate-glow">
-                                    <i class="fas fa-bolt w-6 h-6 text-primary"></i>
-                                </div>
-                                <div class="space-y-1">
-                                    <h3 class="card-title">Fast Delivery</h3>
-                                    <p class="card-description">Efficient development process ensuring timely project completion without compromising quality</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills & Certifications Section -->
-        <section class="bg-card/20">
-            <div class="container space-y-12">
-                <!-- Skills -->
-                <div class="space-y-8">
-                    <h2 class="text-2xl font-bold md:text-3xl">Technical Expertise</h2>
-                    <div class="grid gap-4 md:grid-cols-3">
-                        <div class="card group">
-                            <div class="card-header">
-                                <h3 class="card-title group-hover:text-primary">Frontend Frameworks</h3>
-                                <p class="card-description">React.js, Vue.js, Redux, PrimeVue, Next.js</p>
-                            </div>
-                        </div>
-                        <div class="card group">
-                            <div class="card-header">
-                                <h3 class="card-title group-hover:text-primary">Languages & Styling</h3>
-                                <p class="card-description">JavaScript, TypeScript, HTML5, CSS3, Tailwind CSS, Bootstrap</p>
-                            </div>
-                        </div>
-                        <div class="card group">
-                            <div class="card-header">
-                                <h3 class="card-title group-hover:text-primary">Backend & Tools</h3>
-                                <p class="card-description">Spring Boot, REST APIs, Elasticsearch, Git, Docker, Nginx</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Certifications -->
-                <div class="space-y-8">
-                    <h2 class="text-2xl font-bold md:text-3xl">Certifications & Achievements</h2>
-                    <div class="grid gap-4 md:grid-cols-2">
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="flex items-start justify-between">
-                                    <div class="flex-1">
-                                        <h3 class="card-title">Top Performer Award (A* Rating)</h3>
-                                        <div class="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                                            <span class="text-primary font-medium">Jio Platforms Limited</span>
-                                            <span>•</span>
-                                            <span>2023</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="card-description">Recognized for exceptional contributions to key enterprise projects</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="flex items-start justify-between">
-                                    <div class="flex-1">
-                                        <h3 class="card-title">2nd Rank in Department</h3>
-                                        <div class="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                                            <span class="text-primary font-medium">V.P.M's Polytechnic</span>
-                                            <span>•</span>
-                                            <span>2019</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="card-description">Ranked 2nd among 120 students in Information Technology</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects">
-            <div class="container">
-                <div class="space-y-6 mb-12">
-                    <h2 class="text-3xl font-bold md:text-4xl">Project Portfolio</h2>
-                    <p class="text-lg text-muted-foreground">
-                        Enterprise applications, personal projects, and freelance work showcasing full-stack development expertise
-                    </p>
-                </div>
                 
-                <div class="grid gap-6 md:grid-cols-2" id="projects-grid">
-                    <!-- Projects will be dynamically inserted here -->
+                <div class="flex" style="gap: 1.5rem; flex-wrap: wrap;">
+                    <a href="Aaboli_Sanas_Resume.pdf" download="Aaboli_Sanas_Resume" class="btn btn-resume">
+                        <i class="fas fa-file-download" style="margin-right: 10px;"></i> Download Resume
+                    </a>
+                    <a href="#projects" class="btn btn-secondary">
+                        View Work
+                    </a>
                 </div>
             </div>
-        </section>
 
-        <!-- Contact Section -->
-        <section id="contact">
-            <div class="container max-w-4xl text-center">
-                <div class="space-y-6">
-                    <h2 class="text-3xl font-bold md:text-4xl">Let's Build Something Together</h2>
-                    <p class="mx-auto max-w-2xl text-lg text-muted-foreground">
-                        Available for freelance projects. Whether you need a complete web application or want to enhance your existing platform, let's discuss how I can help bring your vision to life.
-                    </p>
-                    <div class="flex flex-wrap items-center justify-center gap-4 pt-6">
-                        <a href="mailto:aabolisanas@gmail.com">
-                            <button class="btn btn-primary btn-lg">
-                                <i class="fas fa-envelope w-5 h-5 mr-2"></i>
-                                aabolisanas@gmail.com
-                            </button>
-                        </a>
-                        <a href="https://www.linkedin.com/in/aaboli-sanas2001/" target="_blank" rel="noopener noreferrer">
-                            <button class="btn btn-secondary btn-lg">
-                                <i class="fab fa-linkedin w-5 h-5 mr-2"></i>
-                                Connect on LinkedIn
-                            </button>
-                        </a>
+            <div style="display: flex; justify-content: center;">
+                <div class="arch-container">
+                    <div class="arch arch-back-2"></div>
+                    <div class="arch arch-back-1"></div>
+                    <div class="arch arch-main">
+                        <div style="text-align: center; padding: 2rem;">
+                            <div class="floating-icons" style="margin-bottom: 2rem;">
+                                <i class="fab fa-react float-1" style="color: #61dafb;"></i>
+                                <i class="fab fa-vuejs float-2" style="color: #42b883;"></i>
+                                <i class="fab fa-java float-3" style="color: #f89820;"></i>
+                            </div>
+                            <h3>Top Performer</h3>
+                            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Awarded A* Rating (2023)</p>
+                            <div style="margin-top: 1.5rem; font-weight: 700; font-size: 2.5rem; color: var(--accent-pink); -webkit-text-stroke: 1px black;">99.9%</div>
+                            <div style="font-size: 0.9rem; font-weight: 700;">Uptime Maintained</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Footer -->
-        <footer class="border-t border-border">
-            <div class="container max-w-6xl text-center text-sm text-muted-foreground">
-                <p>© 2024 Aaboli Sanas • Software Developer • Mumbai, India</p>
-                <p class="mt-2">Available for freelance projects • aabolisanas@gmail.com • +91 8879350212</p>
+        </div>
+    </section>
+
+    <section id="approach" style="padding: 4rem 0;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2>My Engineering Approach</h2>
+                <p>How I deliver value to enterprise clients</p>
             </div>
-        </footer>
-    </div>
+            
+            <div class="grid md-grid-cols-2 gap-6">
+                
+                <div class="pop-card">
+                    <div class="card-strip" style="background: var(--accent-yellow);"></div>
+                    <div style="padding-left: 1rem;">
+                        <i class="fas fa-bolt feature-icon" style="color: var(--text-black); background: var(--accent-yellow);"></i>
+                        <h3>Fast Delivery</h3>
+                        <p>Created reusable UI libraries with PrimeVue & Tailwind, accelerating development cycles by <strong>30%</strong>. Rapid prototyping that moves to production quickly.</p>
+                    </div>
+                </div>
+
+                <div class="pop-card">
+                    <div class="card-strip" style="background: var(--accent-pink);"></div>
+                    <div style="padding-left: 1rem;">
+                        <i class="fas fa-code feature-icon" style="color: var(--text-black); background: var(--accent-pink);"></i>
+                        <h3>Clean Code</h3>
+                        <p>Strict linting, CI/CD automation, and modular architecture ensure maintainable enterprise codebases. I write self-documenting code that scales.</p>
+                    </div>
+                </div>
+
+                <div class="pop-card">
+                    <div class="card-strip" style="background: var(--accent-mint);"></div>
+                    <div style="padding-left: 1rem;">
+                        <i class="fas fa-chart-line feature-icon" style="color: var(--text-black); background: var(--accent-mint);"></i>
+                        <h3>Scalable Systems</h3>
+                        <p>Optimized application performance by <strong>40%</strong> using bundle optimization, code splitting, and lazy loading strategies for high-traffic platforms.</p>
+                    </div>
+                </div>
+
+                <div class="pop-card">
+                    <div class="card-strip" style="background: var(--accent-blue);"></div>
+                    <div style="padding-left: 1rem;">
+                        <i class="fas fa-layer-group feature-icon" style="color: var(--text-black); background: var(--accent-blue);"></i>
+                        <h3>Interactive Dashboards</h3>
+                        <p>Specialized in complex data visualization using Mapbox & Framer Motion. I turn dry data into actionable, interactive insights for users.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" style="padding: 4rem 0; background: white; border-top: var(--bold-border);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2>Selected Works</h2>
+            </div>
+            <div class="grid md-grid-cols-2 gap-8" id="projects-grid">
+                </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <h2 style="margin-bottom: 1rem;">Let's Build Something Great</h2>
+            <p style="margin-bottom: 2rem;">Available for opportunities and freelance work.</p>
+            
+            <div class="flex" style="justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                <a href="mailto:aabolisanas23@gmail.com" class="btn btn-primary">
+                    <i class="fas fa-envelope" style="margin-right: 8px;"></i> Email Me
+                </a>
+                <a href="https://linkedin.com/in/aaboli-sanas" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-linkedin" style="margin-right: 8px;"></i> LinkedIn
+                </a>
+            </div>
+            
+            <div style="margin-top: 3rem; font-size: 0.9rem; color: #666;">
+                © 2024 Aaboli Sanas. Made with <i class="fas fa-heart" style="color: var(--accent-pink);"></i> in Mumbai.
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // Projects data
+        // Data from Resume
         const projects = [
             {
-    title: "HHC Platform",
-    company: "Jio Platforms Limited",
-    description: "Data analytics platform for Jio AirFiber with interactive heatmaps, drill-down visualizations, and custom map layers for coverage analysis.",
-    tech: ["Vue.js 3", "PrimeVue", "Tailwind CSS", "Mapbox", "GeoJSON", "Elasticsearch"],
-    category: "Data Analytics",
-    impact: "Jio Users",
-    featured: false
-},
-            {
-                title: "Data Access Management Platform",
+                title: "Home Health Card Platform",
                 company: "Jio Platforms Limited",
-                description: "Developed combined quiz/access system managing 5,000+ questions and 200+ admin users. Built comprehensive admin dashboard with question CRUD operations, approval workflow timelines, role-based access controls, and metadata search. Automated processes reduced admin workload by 30%.",
-                tech: ["Vue.js", "Spring Boot", "REST APIs", "RBAC", "Elasticsearch"],
-                category: "Enterprise Platform",
-                impact: "30% Efficiency Gain",
-                featured: false
+                desc: "Analytics platform for 200K+ Jio AirFiber users. Features interactive coverage heatmaps and real-time network analysis.",
+                tech: ["Vue.js 3", "Mapbox", "Elasticsearch", "GeoJSON"],
+                link: null
+            },
+            {
+                title: "Data Access Management",
+                company: "Jio Platforms Limited",
+                desc: "Admin dashboard managing 5,000+ questions. Automated approval workflows reduced review cycle time by 30%.",
+                tech: ["Vue.js", "Spring Boot", "RBAC", "REST APIs"],
+                link: null
             },
             {
                 title: "Mumbai Real Estate Platform",
-                company: "Freelance Project",
-                description: "Comprehensive property listing platform for Mumbai broker with advanced search, property management, sell/buy forms, and interactive property showcase. Built with modern React architecture and responsive design.",
-                tech: ["React.js", "Javascript", "Tailwind CSS", "Interactive UI", "Springboot"],
-                category: "Real Estate",
-                featured: true,
-                impact: "Current Project"
-            },
-             {
-                title: "Mind Games Cafe",
-                company: "Freelance Project",
-                description: "Interactive website for a gaming cafe featuring online booking system, game catalog, and event management capabilities.",
-                tech: ["React.js", "UI/UX Design", "Booking System", "Firebase", "Hostinger", "CDN"],
-                link: "https://mindgamescafe.in/",
-                category: "Entertainment",
-                featured: false
+                company: "Ongoing Freelance Project",
+                desc: "Property listing platform with advanced search, buy/sell workflows, and responsive gallery UIs.",
+                tech: ["React.js", "Tailwind CSS", "Spring Boot"],
+                link: null
             },
             {
-    title: "Travel Booking Form UI",
-    company: "Personal Project",
-    description: "Multi-step travel booking experience with animated transitions, seat selection UI, passenger handling, and summary review flow. Designed for airlines and tourism platforms.",
-    tech: ["React.js", "Tailwind CSS", "Framer Motion", "React-Hook-Form", "UI Animation"],
-    category: "Travel & Booking",
-    link: "https://travelbookr-yxdw.vercel.app/",
-    featured: false,
-    impact: "Prototype Launch"
-},
-            {
-                title: " Frontend Wireframe in React (LifeGrid) - Task & Budget Manager",
+                title: "Travel Booking UI",
                 company: "Personal Project",
-                description: "Notepad-style task manager with built-in expense tracking. Unified interface for productivity and finances with smart dashboard, hierarchical task view, and budget breakdown. Features analytics dashboard with visual charts and powerful filtering.",
-                tech: ["React.js", "Chakra UI", "Framer Motion", "Data Visualization"],
-                category: "Productivity",
-                link: "https://lifegrid-webapp.vercel.app/",
-                featured: false
+                desc: "Modern multi-step booking interface with animated transitions, seat selection, and dynamic form rendering.",
+                tech: ["React.js", "Framer Motion", "Tailwind"],
+                link: "https://travelbookr.vercel.app/"
             },
-           
+            {
+                title: "LifeGrid Workspace",
+                company: "Personal Project",
+                desc: "Smart workspace combining task management with budgeting. Features hierarchical task structures and analytics.",
+                tech: ["React.js", "Chakra UI", "Dashboard"],
+                link: "https://lifegrid-webapp.vercel.app"
+            }
         ];
 
-        // Initialize projects
-        function initProjects() {
-            const projectsGrid = document.getElementById('projects-grid');
-            
-            projects.forEach((project, index) => {
-                const projectCard = createProjectCard(project, index);
-                projectsGrid.appendChild(projectCard);
-            });
-        }
+        const grid = document.getElementById('projects-grid');
 
-        // Create project card element
-        function createProjectCard(project, index) {
+        projects.forEach(p => {
             const card = document.createElement('div');
-            card.className = `card group ${project.featured ? 'featured' : ''}`;
-            
+            card.className = 'pop-card';
             card.innerHTML = `
-                <div class="card-header">
-                    <div class="flex items-center justify-between flex-wrap gap-2 mb-3">
-                        <div class="flex items-center gap-2 flex-wrap">
-                            <span class="project-badge bg-primary/10 text-primary">
-                                ${project.category}
-                            </span>
-                            ${project.company ? `
-                                <span class="project-badge bg-muted text-muted-foreground">
-                                    ${project.company}
-                                </span>
-                            ` : ''}
-                        </div>
-                        ${project.impact ? `
-                            <span class="project-badge bg-accent/10 text-accent">
-                                ${project.impact}
-                            </span>
-                        ` : ''}
-                    </div>
-                    <h3 class="card-title flex items-center justify-between group-hover:text-primary transition-smooth">
-                        <span>${project.title}</span>
-                        ${project.link ? `
-                            <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="opacity-0 transition-smooth group-hover:opacity-100">
-                                <i class="fas fa-external-link-alt w-5 h-5 text-primary"></i>
-                            </a>
-                        ` : ''}
-                    </h3>
-                    <p class="card-description mt-2">
-                        ${project.description}
-                    </p>
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+                    <span style="font-size: 0.8rem; font-weight: 700; background: var(--accent-yellow); padding: 0.2rem 0.5rem; border: 1px solid black;">
+                        ${p.company}
+                    </span>
+                    ${p.link ? `<a href="${p.link}" target="_blank" style="color: var(--text-black);"><i class="fas fa-external-link-alt"></i></a>` : ''}
                 </div>
-                <div class="card-content">
-                    <div class="flex flex-wrap gap-2">
-                        ${project.tech.map(tech => `
-                            <span class="tech-tag hover:bg-secondary transition-smooth">
-                                ${tech}
-                            </span>
-                        `).join('')}
-                    </div>
+                <h3 style="margin-bottom: 0.5rem;">${p.title}</h3>
+                <p style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">${p.desc}</p>
+                <div style="margin-top: auto;">
+                    ${p.tech.map(t => `<span class="tech-pill">${t}</span>`).join('')}
                 </div>
             `;
-            
-            return card;
-        }
-
-        // Smooth scroll function
-        function scrollToSection(id) {
-            const element = document.getElementById(id);
-            if (element) {
-                element.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        }
-
-        // Scroll animations
-        function initScrollAnimations() {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-fade-in');
-                    }
-                });
-            }, observerOptions);
-
-            // Observe all animated elements
-            document.querySelectorAll('.card, .space-y-6 > *').forEach(el => {
-                observer.observe(el);
-            });
-        }
-
-        // Add hover effects for buttons
-        document.addEventListener('DOMContentLoaded', function() {
-            const buttons = document.querySelectorAll('.btn');
-            buttons.forEach(button => {
-                button.addEventListener('mouseenter', function() {
-                    this.style.transform = 'scale(1.05)';
-                });
-                
-                button.addEventListener('mouseleave', function() {
-                    this.style.transform = 'scale(1)';
-                });
-            });
-        });
-
-        // Initialize when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize projects
-            initProjects();
-            
-            // Initialize scroll animations
-            initScrollAnimations();
+            grid.appendChild(card);
         });
     </script>
 </body>
