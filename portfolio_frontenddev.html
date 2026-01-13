@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aaboli Sanas | Frontend Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Retro-Pop Palette */
+            --bg-cream: #FFF9F0;
+            --text-black: #1a1a1a;
+            --accent-yellow: #FFD54F; 
+            --accent-mint: #A7F3D0;   
+            --accent-pink: #FF90B3; 
+            --accent-blue: #BAE6FD;   
+            
+            --bold-border: 3px solid var(--text-black);
+            --hard-shadow: 6px 6px 0px var(--text-black);
+            --hard-shadow-hover: 3px 3px 0px var(--text-black);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-black);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: radial-gradient(#FFD54F 1.5px, transparent 1.5px), radial-gradient(#A7F3D0 1.5px, transparent 1.5px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+        }
+
+        /* --- Typography --- */
+        h1, h2, h3 { font-weight: 800; line-height: 1.1; }
+        h1 { font-size: 3rem; margin-bottom: 1rem; }
+        h2 { font-size: 2.5rem; position: relative; display: inline-block; margin-bottom: 2rem; }
+        h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+        
+        @media (min-width: 768px) { h1 { font-size: 4.5rem; } }
+
+        /* --- Layout --- */
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+        .flex { display: flex; }
+        .grid { display: grid; gap: 2rem; }
+        .md-grid-cols-2 { grid-template-columns: 1fr; }
+        
+        @media (min-width: 768px) {
+            .md-grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* --- Buttons --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: var(--bold-border);
+            background: white;
+            color: var(--text-black);
+            box-shadow: var(--hard-shadow);
+            transition: all 0.2s ease;
+            cursor: pointer;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+            transform: translate(3px, 3px);
+            box-shadow: var(--hard-shadow-hover);
+        }
+
+        .btn-primary { background: var(--accent-yellow); }
+        .btn-secondary { background: white; }
+        
+        .btn-resume { 
+            background: var(--accent-pink); 
+            color: var(--text-black);
+            padding: 1.2rem 2.5rem;
+            font-size: 1.1rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        
+        .btn-resume:hover {
+            animation: none;
+            background: #ff749f;
+            transform: translate(3px, 3px);
+            box-shadow: var(--hard-shadow-hover);
+        }
+
+        /* --- Pop Cards --- */
+        .pop-card {
+            background: white;
+            border: var(--bold-border);
+            padding: 2rem;
+            box-shadow: var(--hard-shadow);
+            transition: all 0.2s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .pop-card:hover { transform: translate(3px, 3px); box-shadow: var(--hard-shadow-hover); }
+
+        .card-strip {
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 10px;
+            border-right: 3px solid black;
+        }
+
+        /* --- Navbar --- */
+        nav { padding: 1.5rem 0; background: var(--bg-cream); border-bottom: var(--bold-border); position: sticky; top: 0; z-index: 100; }
+        .nav-logo { font-size: 1.5rem; font-weight: 900; }
+        
+        /* --- Hero Section Styles --- */
+        .hero { 
+            padding: 4rem 0; 
+            min-height: 85vh; 
+            display: flex; 
+            align-items: center; 
+            position: relative; 
+            overflow: hidden; 
+        }
+        
+        /* Grid Layout for Hero: Ensures Text is Left, Visual is Right */
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 1fr; /* Stack on mobile */
+            gap: 3rem;
+            align-items: center;
+        }
+        @media (max-width: 899px) {
+  .hero-layout {
+    text-align: center;
+  }
+
+  .hero-layout > div:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-layout p {
+    text-align: center;
+  }
+}
+        @media (min-width: 900px) {
+            .hero-layout {
+                grid-template-columns: 1.2fr 0.8fr; /* Side by side on Desktop */
+                text-align: left;
+            }
+        }
+        
+        /* Arches Visual */
+        .arch-container { 
+    position: relative; 
+    width: 100%;
+    max-width: 320px;
+    height: 460px;
+    margin: 0 auto;
+}
+@media (max-width: 480px) {
+    .arch-container {
+        max-width: 260px;
+        height: 330px;
+    }
+
+    .arch-back-1 {
+        transform: rotate(3deg) translate(10px, 8px);
+    }
+
+    .arch-back-2 {
+        transform: rotate(-6deg) translate(-10px, 12px);
+    }
+
+    .floating-icons i {
+        font-size: 2.2rem;
+    }
+}
+        @media (min-width: 900px) {
+            .arch-container { margin: 0; margin-left: auto; } /* Align right on desktop */
+        }
+
+        .arch {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            border-radius: 200px 200px 0 0; border: var(--bold-border); background: white;
+            transition: transform 0.3s ease;
+        }
+        .arch-back-1 { background: var(--accent-yellow); transform: rotate(5deg) translate(20px, 10px); z-index: 1; }
+        .arch-back-2 { background: var(--accent-pink); transform: rotate(-10deg) translate(-20px, 20px); z-index: 0; }
+        .arch-main { z-index: 2; display: flex; flex-direction: column; justify-content: center; align-items: center; overflow: hidden; }
+        
+        .floating-icons i { font-size: 3rem; margin: 0 10px; animation: float 3s ease-in-out infinite; }
+        .float-2 { animation-delay: 0.5s; } .float-3 { animation-delay: 1s; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        /* --- Feature Grid --- */
+        .feature-icon {
+            font-size: 2rem; margin-bottom: 1rem; display: inline-block;
+            padding: 10px; border: 2px solid black; border-radius: 8px;
+            box-shadow: 4px 4px 0 black; background: white;
+        }
+
+        /* --- Footer --- */
+        footer { padding: 3rem 0; border-top: var(--bold-border); background: white; text-align: center; }
+        
+        .tech-pill {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: var(--text-black);
+            color: white;
+            font-weight: 700;
+            font-size: 0.75rem;
+            border-radius: 50px;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        /* Keep CTA buttons in one row on mobile */
+@media (max-width: 600px) {
+  .hero .flex {
+    flex-wrap: nowrap;
+    gap: 1rem;
+  }
+
+  .hero .btn {
+    flex: 1;
+    padding: 0.9rem 1rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+}
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="nav-logo"><i class="fas fa-cube"></i> Aaboli.</div>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <a href="#projects" style="text-decoration: none; color: black; font-weight: 700; margin-right: 1rem; display: none; @media(min-width:768px){display:block;}">Work</a>
+                <a href="mailto:aabolisanas23@gmail.com" class="btn btn-primary">
+                    <i class="fas fa-envelope" style="margin-right: 8px;"></i> Email Me
+                </a>
+                <!-- <a href="Aaboli_Sanas_Resume.pdf" download class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">
+                    Resume <i class="fas fa-arrow-down" style="margin-left: 5px;"></i>
+                </a> -->
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container hero-layout">
+            
+            <div style="z-index: 2;">
+                <div style="display: inline-block; background: var(--accent-pink); border: var(--bold-border); padding: 0.5rem 1rem; font-weight: 700; margin-bottom: 1.5rem; box-shadow: 4px 4px 0 black;">
+                    Frontend Developer
+                </div>
+                <h1>Aaboli Sanas</h1>
+                <h2 style="font-size: 1.5rem; background: var(--accent-mint); padding: 0.4rem 1.2rem; margin-bottom: 1.5rem; border: 2px solid black; transform: rotate(-1deg);">
+                    3+ Years @ Reliance Jio
+                </h2>
+                <p style="margin-bottom: 2.5rem; max-width: 500px; font-size: 1.1rem;">
+                    Building scalable enterprise applications for <strong>500K+ users</strong>. Expert in React.js, Tailwind CSS, Vue.js, Javascript, Core Java with a focus on <strong>40% performance optimization</strong>.
+                </p>
+                
+                <div class="flex" style="gap: 1.5rem; flex-wrap: wrap;">
+                    <!-- <a href="Aaboli_Sanas_Resume.pdf" download="Aaboli_Sanas_Resume" class="btn btn-resume">
+                        <i class="fas fa-file-download" style="margin-right: 10px;"></i> Download Resume
+                    </a> -->
+                    <a href="mailto:aabolisanas23@gmail.com" class="btn btn-resume">
+                    <i class="fas fa-envelope" style="margin-right: 8px;"></i> Contact
+                </a>
+                    <a href="#projects" class="btn btn-secondary">
+                        View Work
+                    </a>
+                </div>
+            </div>
+
+            <div style="display: flex; justify-content: center;">
+                <div class="arch-container">
+                    <div class="arch arch-back-2"></div>
+                    <div class="arch arch-back-1"></div>
+                    <div class="arch arch-main">
+                        <div style="text-align: center; padding: 2rem;">
+                            <div class="floating-icons" style="margin-bottom: 2rem;">
+                                <i class="fab fa-react float-1" style="color: #61dafb;"></i>
+                                <i class="fab fa-vuejs float-2" style="color: #42b883;"></i>
+                                <i class="fab fa-java float-3" style="color: #f89820;"></i>
+                            </div>
+                            <h3>Top Performer</h3>
+                            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Awarded A* Rating (2023)</p>
+                            <div style="margin-top: 1.5rem; font-weight: 700; font-size: 2.5rem; color: var(--accent-pink); -webkit-text-stroke: 1px black;">99.9%</div>
+                            <div style="font-size: 0.9rem; font-weight: 700;">Uptime Maintained</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="approach" style="padding: 4rem 0;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2>My Engineering Approach</h2>
+                <p>How I deliver value to enterprise clients</p>
+            </div>
+            
+            <div class="grid md-grid-cols-2 gap-6">
+                
+                <div class="pop-card">
+                    <div class="card-strip" style="background: var(--accent-yellow);"></div>
+                    <div style="padding-left: 1rem;">
+                        <i class="fas fa-bolt feature-icon" style="color: var(--text-black); background: var(--accent-yellow);"></i>
+                        <h3>Fast Delivery</h3>
+                        <p>Created reusable UI libraries with PrimeVue & Tailwind, accelerating development cycles by <strong>30%</strong>. Rapid prototyping that moves to production quickly.</p>
+                    </div>
+                </div>
+
+                <div class="pop-card">
+                    <div class="card-strip" style="background: var(--accent-pink);"></div>
+                    <div style="padding-left: 1rem;">
+                        <i class="fas fa-code feature-icon" style="color: var(--text-black); background: var(--accent-pink);"></i>
+                        <h3>Clean Code</h3>
+                        <p>Strict linting, CI/CD automation, and modular architecture ensure maintainable enterprise codebases. I write self-documenting code that scales.</p>
+                    </div>
+                </div>
+
+                <div class="pop-card">
+                    <div class="card-strip" style="background: var(--accent-mint);"></div>
+                    <div style="padding-left: 1rem;">
+                        <i class="fas fa-chart-line feature-icon" style="color: var(--text-black); background: var(--accent-mint);"></i>
+                        <h3>Scalable Systems</h3>
+                        <p>Optimized application performance by <strong>40%</strong> using bundle optimization, code splitting, and lazy loading strategies for high-traffic platforms.</p>
+                    </div>
+                </div>
+
+                <div class="pop-card">
+                    <div class="card-strip" style="background: var(--accent-blue);"></div>
+                    <div style="padding-left: 1rem;">
+                        <i class="fas fa-layer-group feature-icon" style="color: var(--text-black); background: var(--accent-blue);"></i>
+                        <h3>Interactive Dashboards</h3>
+                        <p>Specialized in complex data visualization using Mapbox & Framer Motion. I turn dry data into actionable, interactive insights for users.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" style="padding: 4rem 0; background: white; border-top: var(--bold-border);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2>Selected Works</h2>
+            </div>
+            <div class="grid md-grid-cols-2 gap-8" id="projects-grid">
+                </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <h2 style="margin-bottom: 1rem;">Let's Build Something Great</h2>
+            <p style="margin-bottom: 2rem;">Available for opportunities and freelance work.</p>
+            
+            <div class="flex" style="justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                <a href="mailto:aabolisanas23@gmail.com" class="btn btn-primary">
+                    <i class="fas fa-envelope" style="margin-right: 8px;"></i> Email Me
+                </a>
+                <a href="https://linkedin.com/in/aaboli-sanas" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-linkedin" style="margin-right: 8px;"></i> LinkedIn
+                </a>
+            </div>
+            
+            <div style="margin-top: 3rem; font-size: 0.9rem; color: #666;">
+                © 2024 Aaboli Sanas. Made with <i class="fas fa-heart" style="color: var(--accent-pink);"></i> in Mumbai.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data from Resume
+       const projects = [
+        {
+            title: "Home Health Card Platform",
+            company: "Jio Platforms Limited",
+            desc: "Analytics platform for 200K+ Jio users. Features interactive coverage heatmaps and real-time network analysis.",
+            tech: [
+  "Vue.js 3 (Composition API)",
+  "Mapbox",
+  "Elasticsearch",
+  "GeoJSON",
+  "Data Visualization",
+  "High-Traffic Optimization"
+],
+            link: null
+        },
+        {
+            title: "Data Access Management",
+            company: "Jio Platforms Limited",
+            desc: "Admin dashboard managing 5,000+ questions. Automated approval workflows reduced review cycle time by 30%.",
+            tech: [
+  "Vue.js",
+  "Spring Boot",
+  "RBAC",
+  "REST APIs",
+  "Workflow Automation",
+  "Admin Dashboards"
+],
+            link: null
+        },
+        {
+            title: "Mind Games Cafe",
+            company: "Client Project",
+         desc: "Official website for a modern board gaming cafe in Dombivli showcasing the cafe’s story, 320+ international board games, and community-driven experiences. Includes detailed game listings, food menu sections, image gallery, and a book table feature that redirects users to WhatsApp for quick and convenient reservations. Features a real-time admin dashboard for managing game listings, gallery content, food details, and featured sections, allowing instant updates without developer dependency. Designed with strong branding, performance optimization, and a mobile-first, responsive user experience.",
+
+            tech: [
+  "React",
+  "Modern CSS (Flexbox & Grid)",
+  "Responsive Design",
+  "SEO Optimization",
+  "Cloudinary (Image CDN)",
+  "Performance Optimization",
+  "Accessibility (a11y)",
+  "Mobile-First UI",
+  "Static Site Optimization",
+  "Firebase",
+  "Hostinger Hosting"
+],
+            link: "https://www.mindgamescafe.in/"
+        },
+        {
+            title: "Mumbai Real Estate Platform",
+            company: "Ongoing Client Project",
+            desc: "Real estate platform enabling users to list properties for sale through a dedicated sell form and allowing buyers to discover properties based on price, location, number of bedrooms, rent or buy preference, and other criteria. Includes homepage-level search and filter functionality along with detailed property views showcasing amenities and key property information. Features an admin panel where administrators can view complete property details, approve or reject listings before publication, and mark properties as sold. The website also includes standard informational sections such as About Us and copyright details. Built with a focus on user experience, performance optimization, and scalability to handle a growing number of listings and users.",
+            tech: [
+  "React.js (Hooks)",
+  "Tailwind CSS",
+  "Spring Boot",
+  "Redis (In-memory Caching for Performance)",
+  "REST APIs",
+  "AWS (EC2, S3, IAM, Load Balancer)",
+  "Cloudinary (Image CDN)",
+  "JWT Authentication",
+  "Advanced Search & Filters",
+  "Responsive UI",
+  "Performance Optimization"
+],
+            link: null
+        },
+        {
+            title: "Travel Booking UI",
+            company: "Personal Project",
+            desc: "UI-oriented travel booking interface built to simulate a real-world airline booking flow using a multi-step form approach. Features animated transitions, seat selection, and dynamic form rendering with a strong emphasis on user experience, form validation, and responsive design.",
+
+            tech: [
+  "React.js",
+  "Framer Motion",
+  "Tailwind CSS",
+  "Multi-step Forms",
+  "Form Validation",
+  "UI Animations",
+  "Component-based Architecture"
+],
+            link: "https://travelbookr.vercel.app/"
+        },
+        {
+            title: "LifeGrid Workspace UI",
+            company: "Personal Project",
+            desc: "UI-oriented smart workspace combining task management with budgeting features, built entirely using dummy data to simulate real-world workflows. Designed to showcase hierarchical task structures, budget tracking, and visual analytics dashboards with a strong focus on clean UI, state management, animations, and responsive design.",
+
+            tech: ["React.js", "Chakra UI", "Dashboard","Framer Motion",
+  "Tailwind CSS", "UI Animations","Dummy Data Simulation"],
+            link: "https://lifegrid-webapp.vercel.app"
+        },
+        {
+    title: "Interactive 3D Donut Experience", // Or "Data Visualization Donut"
+    company: "Design Experiment",
+    desc: "A high-fidelity UI component translated from Figma to code. Features smooth 60fps animations, interactive hover states, and dynamic rendering to mimic the original motion design perfectly.",
+    tech: [
+        "React",
+        "Framer Motion", // Assuming you used this for the animation
+        "Three.js / React Three Fiber", // Add this if it's a 3D donut
+        "SVG Path Animations", 
+        "Figma-to-Code"
+    ],
+    link: "https://www.figma.com/proto/T10LpnOkCaNYC7Ezk2piYt/Untitled?node-id=110-595&starting-point-node-id=110%3A595&t=4NcBpMHvLDjPqpLQ-1"
+}
+    ];
+
+        const grid = document.getElementById('projects-grid');
+
+        projects.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'pop-card';
+        card.innerHTML = `
+            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+                <span style="font-size: 0.8rem; font-weight: 700; background: var(--accent-yellow); padding: 0.2rem 0.5rem; border: 1px solid black;">
+                    ${p.company}
+                </span>
+                ${p.link ? `<a href="${p.link}" target="_blank" style="color: var(--text-black);"><i class="fas fa-external-link-alt"></i></a>` : ''}
+            </div>
+            <h3 style="margin-bottom: 0.5rem;">${p.title}</h3>
+            <p style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">${p.desc}</p>
+            <div style="margin-top: auto;">
+                ${p.tech.map(t => `<span class="tech-pill">${t}</span>`).join('')}
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+    </script>
+</body>
+</html>
